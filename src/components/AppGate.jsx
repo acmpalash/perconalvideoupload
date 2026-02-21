@@ -39,7 +39,7 @@ export default function AppGate({ children }) {
           />
           <button
             onClick={submit}
-            className="w-full bg-blue-700 text-white py-2 rounded-lg"
+            className="w-full bg-blue-800 text-white py-2 rounded-lg"
           >
             Enter
           </button>
