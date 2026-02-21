@@ -1,13 +1,29 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function UploadForm() {
   const [file, setFile] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
 
   const fileRef = useRef(null);
+
+  useEffect(() => {
+      if (!file) {
+        setPreviewUrl(null);
+        return;
+      }
+
+      const url = URL.createObjectURL(file);
+      setPreviewUrl(url);
+
+      return () => {
+        URL.revokeObjectURL(url);
+      };
+    }, [file]);
+  
 
   const upload = async () => {
     if (!file || !title) return alert("Title & file required");
@@ -31,7 +47,7 @@ export default function UploadForm() {
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4">
       <div className="w-full max-w-xl bg-white/90 backdrop-blur rounded-2xl shadow-xl p-6 sm:p-8 space-y-5">
-        
+
         <h2 className="text-2xl font-bold text-center text-gray-800">
           Upload Media
         </h2>
@@ -60,29 +76,54 @@ export default function UploadForm() {
           />
         </div>
 
-        {/* File */}
-        <div className="space-y-1">
+        {/* File Picker */}
+        <div className="space-y-2">
           <label className="text-sm font-medium text-gray-700">Media File</label>
-          <div className="mx-4">
-          <button 
-          type="button"
-          onClick={() => fileRef.current?.click()}
-          className="flex items-center justify-center gap-2 w-full bg-amber-400 cursor-pointer 
-          rounded-lg border-2 border-dashed border-gray-300 px-1 py-4 text-blue-700 hover:border-black
-          hover:text-black transition min-w-15">
-            {file ? file.name : "Click to select video/audio"} 
-            </button>
-            <input
-             ref={fileRef}
+
+          <button
+            type="button"
+            onClick={() => fileRef.current?.click()}
+            className="flex items-center justify-center gap-2 w-full bg-amber-400 cursor-pointer 
+              rounded-lg border-2 border-dashed border-gray-300 px-3 py-4 text-blue-700 hover:border-black
+              hover:text-black transition"
+          >
+            {file ? file.name : "Click to select video/audio"}
+          </button>
+
+          <input
+            ref={fileRef}
             type="file"
             accept="video/*,audio/*"
-            onChange={(e) => setFile(e.target.files[0])}
+            onChange={(e) => setFile(e.target.files?.[0])}
             className="hidden"
+          />
+
+          {/* Selected file path */}
+          {file && (
+            <p className="text-xs text-gray-600 break-all">
+              Selected: {file.name}
+            </p>
+          )}
+
+          {/* Preview */}
+          {previewUrl && file?.type.startsWith("video") && (
+            <video
+              src={previewUrl}
+              controls
+              className="w-full rounded-lg mt-2 border"
             />
-          
+          )}
+
+          {previewUrl && file?.type.startsWith("audio") && (
+            <audio
+              src={previewUrl}
+              controls
+              className="w-full mt-2"
+            />
+          )}
         </div>
-        </div>
-        {/* Button */}
+
+        {/* Upload Button */}
         <button
           onClick={upload}
           disabled={loading}

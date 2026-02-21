@@ -13,10 +13,22 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$
 ;
 function UploadForm() {
     const [file, setFile] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [previewUrl, setPreviewUrl] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [title, setTitle] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     const [description, setDescription] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const fileRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        if (!file) {
+            setPreviewUrl(null);
+            return;
+        }
+        const url = URL.createObjectURL(file);
+        setPreviewUrl(url);
+        return ()=>URL.revokeObjectURL(url);
+    }, [
+        file
+    ]);
     const upload = async ()=>{
         if (!file || !title) return alert("Title & file required");
         setLoading(true);
@@ -41,7 +53,7 @@ function UploadForm() {
                     children: "Upload Media"
                 }, void 0, false, {
                     fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-                    lineNumber: 35,
+                    lineNumber: 48,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -49,7 +61,7 @@ function UploadForm() {
                     children: "Upload your private video or audio to cloud storage"
                 }, void 0, false, {
                     fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-                    lineNumber: 38,
+                    lineNumber: 51,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -60,7 +72,7 @@ function UploadForm() {
                             children: "Title"
                         }, void 0, false, {
                             fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-                            lineNumber: 44,
+                            lineNumber: 57,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -70,13 +82,13 @@ function UploadForm() {
                             onChange: (e)=>setTitle(e.target.value)
                         }, void 0, false, {
                             fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-                            lineNumber: 45,
+                            lineNumber: 58,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-                    lineNumber: 43,
+                    lineNumber: 56,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -87,7 +99,7 @@ function UploadForm() {
                             children: "Description"
                         }, void 0, false, {
                             fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-                            lineNumber: 55,
+                            lineNumber: 68,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -96,60 +108,80 @@ function UploadForm() {
                             onChange: (e)=>setDescription(e.target.value)
                         }, void 0, false, {
                             fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-                            lineNumber: 56,
+                            lineNumber: 69,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-                    lineNumber: 54,
+                    lineNumber: 67,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "space-y-1",
+                    className: "space-y-2",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                             className: "text-sm font-medium text-gray-700",
                             children: "Media File"
                         }, void 0, false, {
                             fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-                            lineNumber: 65,
+                            lineNumber: 78,
                             columnNumber: 11
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "mx-4",
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            type: "button",
+                            onClick: ()=>fileRef.current?.click(),
+                            className: "flex items-center justify-center gap-2 w-full bg-amber-400 cursor-pointer    rounded-lg border-2 border-dashed border-gray-300 px-3 py-4 text-blue-700 hover:border-black   hover:text-black transition",
+                            children: file ? file.name : "Click to select video/audio"
+                        }, void 0, false, {
+                            fileName: "[project]/videoupload/src/components/UploadForm.jsx",
+                            lineNumber: 80,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                            ref: fileRef,
+                            type: "file",
+                            accept: "video/*,audio/*",
+                            onChange: (e)=>setFile(e.target.files?.[0]),
+                            className: "hidden"
+                        }, void 0, false, {
+                            fileName: "[project]/videoupload/src/components/UploadForm.jsx",
+                            lineNumber: 90,
+                            columnNumber: 11
+                        }, this),
+                        file && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-xs text-gray-600 break-all",
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    type: "button",
-                                    onClick: ()=>fileRef.current?.click(),
-                                    className: "flex items-center justify-center gap-2 w-full bg-amber-400 cursor-pointer    rounded-lg border-2 border-dashed border-gray-300 px-1 py-4 text-blue-700 hover:border-black   hover:text-black transition min-w-15",
-                                    children: file ? file.name : "Click to select video/audio"
-                                }, void 0, false, {
-                                    fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-                                    lineNumber: 67,
-                                    columnNumber: 11
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                    ref: fileRef,
-                                    type: "file",
-                                    accept: "video/*,audio/*",
-                                    onChange: (e)=>setFile(e.target.files[0]),
-                                    className: "hidden"
-                                }, void 0, false, {
-                                    fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-                                    lineNumber: 75,
-                                    columnNumber: 13
-                                }, this)
+                                "Selected: ",
+                                file.name
                             ]
                         }, void 0, true, {
                             fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-                            lineNumber: 66,
-                            columnNumber: 11
+                            lineNumber: 100,
+                            columnNumber: 13
+                        }, this),
+                        previewUrl && file?.type.startsWith("video") && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("video", {
+                            src: previewUrl,
+                            controls: true,
+                            className: "w-full rounded-lg mt-2 border"
+                        }, void 0, false, {
+                            fileName: "[project]/videoupload/src/components/UploadForm.jsx",
+                            lineNumber: 107,
+                            columnNumber: 13
+                        }, this),
+                        previewUrl && file?.type.startsWith("audio") && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("audio", {
+                            src: previewUrl,
+                            controls: true,
+                            className: "w-full mt-2"
+                        }, void 0, false, {
+                            fileName: "[project]/videoupload/src/components/UploadForm.jsx",
+                            lineNumber: 115,
+                            columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-                    lineNumber: 64,
+                    lineNumber: 77,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$videoupload$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -159,18 +191,18 @@ function UploadForm() {
                     children: loading ? "Uploading..." : "Upload"
                 }, void 0, false, {
                     fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-                    lineNumber: 86,
+                    lineNumber: 124,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-            lineNumber: 33,
+            lineNumber: 46,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/videoupload/src/components/UploadForm.jsx",
-        lineNumber: 32,
+        lineNumber: 45,
         columnNumber: 5
     }, this);
 }
